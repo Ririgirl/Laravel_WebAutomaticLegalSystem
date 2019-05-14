@@ -1,6 +1,14 @@
 @extends('layouts.app')
-
+@section('title', '| Регистрация')
 @section('content')
+<style>
+    label, .card-header, a {
+      font-size:13px;
+      color:#8d8d8d;
+      font-family: 'Raleway', sans-serif;
+      font-size:14px;
+    }
+</style>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

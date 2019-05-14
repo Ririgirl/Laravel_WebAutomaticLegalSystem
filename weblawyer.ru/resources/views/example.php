@@ -1,9 +1,157 @@
-@extends('layouts.app')
-@section('content')
-        <h2>Упраляйте своми делами</h2>
-        <h2 class="typewrite"><span>быстро</span></h2>
-        <p>Ознакомьтесь с нашей системой и начините ее использовать, именно она ускорит вашу рутинную работу!</p>
-@endsection('content')
+<!doctype html>
+
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <title>Home - THOMSOON fixed - Portfolio with grid and modern simplicity style - download now!</title>
+
+  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" >
+
+<!--Style-->
+
+  <link rel="stylesheet" href="{{ URL::asset('css/reset.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}" type="text/css">
+  <link rel="stylesheet" href="{{ URL::asset('css/style-responsive.css') }}" type="text/css">
+    
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  
+</head>
+
+<body>
+
+<!--Preloader-->
+
+<div class="preloader" id="preloader">
+    <div class="item">
+      <div class="spinner">
+      </div>
+    </div>
+</div>
+
+
+<!--Header-->
+<header class="boxed" id="header-white">
+
+  <div class="header-margin">
+  
+    <div class="logo"><a class="ajax-link" href="index.html">THOMSOON</a></div>
+    <ul class="header-nav">
+      <li><a class="ajax-link" href="projects.html">Projects</a>
+        <ul>
+          <li><a class="ajax-link" href="projects.html">Projects</a></li> 
+          <li><a class="ajax-link" href="single.html">Single project</a></li> 
+          <li><a class="ajax-link" href="single-full.html">Single project fullscreen</a></li> 
+                   
+        </ul>
+      
+      </li>
+      
+      <li><a class="ajax-link" href="about-me.html">About me</a></li>
+      <li><a class="ajax-link" href="contact.html">Contact</a></li>
+    </ul>
+    
+    <ul class="social-icon">
+      <div class="social-index">
+      <li><a href="https://www.facebook.com/thomsooncom">Войти</i></a></li>
+      <li><a href="https://www.behance.net/TomaszMazurczak"><i class="fa fa-behance"></i></a></li>
+      </div>
+    </ul>
+    
+  </div>
+
+</header>
+
+<div class="clear"></div>
+
+<!--Content-->
+
+<div class="content" id="ajax-content">
+
+
+      <div class="text-intro" id="site-type">
+
+        <h1>My creative and simplicity modern</h1>
+        <h1 class="typewrite"><span>Portfolio</span></h1>
+        <p>Please check my portfolio. All project is clean and simplicity modern style. You can buy this template.</p>
+
+      </div>
+
+
+<!--Portfolio grid-->
+
+<ul class="portfolio-grid" id="portfolio-sidebar">
+
+  
+  <li class="grid-item" data-jkit="[show:delay=3000;speed=500;animation=fade]">
+    <img src="img/portfolio/1.jpg">
+      <a class="ajax-link" href="single.html">  
+        <div class="grid-hover">
+          <h1>Single</h1>
+          <p>Branding</p>
+        </div>
+      </a>  
+  </li>
+
+  <li class="grid-item" data-jkit="[show:delay=3000;speed=500;animation=fade]">
+    <img src="img/portfolio/5.jpg">
+      <a class="ajax-link" href="single.html">  
+        <div class="grid-hover">
+          <h1>Single</h1>
+          <p>Branding</p>
+        </div>
+      </a>      
+  </li>    
+  
+  <li class="grid-item" data-jkit="[show:delay=3000;speed=500;animation=fade]">
+    <img src="img/portfolio/2.jpg">
+      <a class="ajax-link" href="single.html">  
+        <div class="grid-hover">
+          <h1>Single</h1>
+          <p>Branding</p>
+        </div>
+      </a>      
+  </li>  
+  
+  <li class="grid-item" data-jkit="[show:delay=3000;speed=500;animation=fade]">
+    <img src="img/portfolio/3.jpg">
+      <a class="ajax-link" href="single.html">  
+        <div class="grid-hover">
+          <h1>Single</h1>
+          <p>Branding</p>
+        </div>
+      </a>      
+  </li>    
+
+  <li class="grid-item" data-jkit="[show:delay=3000;speed=500;animation=fade]">
+    <img src="img/portfolio/4.jpg">
+      <a class="ajax-link" href="single.html">  
+        <div class="grid-hover">
+          <h1>Single</h1>
+          <p>Branding</p>
+        </div>
+      </a>      
+  </li>    
+
+  <li class="grid-item" data-jkit="[show:delay=3000;speed=500;animation=fade]">
+    <img src="img/portfolio/6.jpg">
+      <a class="ajax-link" href="single.html">  
+        <div class="grid-hover">
+          <h1>Single</h1>
+          <p>Branding</p>
+        </div>
+      </a>      
+  </li>  
+
+</ul>
+
+</div>
+
+
 <!--Home Sidebar-->
 
 <div id="ajax-sidebar">
@@ -25,3 +173,37 @@
   </div>
   
 </div>
+
+
+<!--Footer-->
+
+<footer id="footer-box">
+
+  <div class="footer-margin">
+   
+  <div class="copyright" id="footer-left">© Copyright 2015 Thomsoon.com. All Rights Reserved.</div>
+  
+  </div>
+
+
+</footer>
+
+
+<!--Scripts-->
+
+  <script src="{{ URL::asset('js/js/jquery.min.js') }}"></script>
+    <script src="{{ URL::asset('js/js/jquery.easing.min.js') }}"></script>
+    <script src="{{ URL::asset('js/js/modernizr.custom.42534.js') }}" type="text/javascript"></script>
+  <script src="{{ URL::asset('js/js/jquery.waitforimages.js') }}" type="text/javascript"></script>
+  <script src="{{ URL::asset('js/js/typed.js') }}" type="text/javascript"></script>
+  <script src="{{ URL::asset('js/js/masonry.pkgd.min.js') }}" type="text/javascript"></script>  
+  <script src="{{ URL::asset('js/js/imagesloaded.pkgd.min.js') }}" type="text/javascript"></script>    
+  <script src="{{ URL::asset('js/js/jquery.jkit.1.2.16.min.js') }}"></script>
+  
+  
+    
+  <script src="{{ URL::asset('js/js/script.js') }}" type="text/javascript"></script>
+
+
+</body>
+</html>
