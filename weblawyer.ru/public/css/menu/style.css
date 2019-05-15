@@ -1,0 +1,20 @@
+.search, .task_last {
+  background-color:white;
+  border-radius: 3px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5); /* Параметры тени */
+  padding: 1%;
+}
+.search_form{
+  padding-top:1%;
+  padding-bottom:0,5%;
+}
+.btn-outline-dark {
+  background-color:white;
+}
+.card-body{
+ background-color:#f1f1f1;
+}
+
+.card-footer {
+ background-color:#f1f1f1;
+}

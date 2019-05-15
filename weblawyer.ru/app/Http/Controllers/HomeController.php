@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\tasks;
+use App\acts;
+use DB;
+use App\User;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +28,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $tasks = DB::table('tasks')
+        ->join('acts', 'tasks.num_act', '=', 'acts.reg_number')
+        ->select('tasks.name', 'tasks.status', 'tasks.description', 'tasks.created_at', 'tasks.description', 'acts.reg_number')
+        ->paginate(10);
+        return view('home', compact('tasks'));
     }
 }

@@ -295,6 +295,7 @@ header li > a{
   line-height:80px;
   display:inline-block;  
   border-bottom:0;
+  text-decoration: none;
 }
 
 header li > a:hover{
