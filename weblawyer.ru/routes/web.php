@@ -17,4 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home'); //главная страниц с задачами
+Route::get('/home/task/{id}', 'HomeController@seetask'); //подробности задачи
+Route::get('/home/task_done', 'HomeController@seetaskdone'); //реализованные задачи

@@ -1,4 +1,15 @@
 @extends('layouts.app')
+<style>
+  .content .text-intro p{
+  font-size:13px;
+  color:#8d8d8d;
+  margin-top:30px;
+  font-weight:400;
+  line-height:22px;
+  letter-spacing:1px;
+  width:40%;
+}
+</style>
 @section('content')
         <h2>Упраляйте своми делами</h2>
         <h2 class="typewrite"><span>быстро</span></h2>

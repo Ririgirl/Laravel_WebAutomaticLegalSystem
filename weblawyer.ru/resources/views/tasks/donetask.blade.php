@@ -1,5 +1,4 @@
 @extends('layouts.app')
-<!-- Styles -->
     <link rel="stylesheet" href="{{ URL::asset('css/menu/style.css') }}" type="text/css">
 @section('content')
 <div class="container">
@@ -17,16 +16,16 @@
         <div class="row book justify-content-center">
             <div class="container">
             <div class="row">
-                <div class="col-md-6"><p class="float-right"><a href="#" class="disabled">В разработке</a></p></div>
-                <div class="col-md-6"><p class="float-left"><a href="{{ action('HomeController@seetaskdone') }}">Реализованные</a></p></div>
+                <div class="col-md-6"><p class="float-right"><a href="{{ action('HomeController@index') }}" >В разработке</a></p></div>
+                <div class="col-md-6"><p class="float-left"><a href="#" class="disabled">Реализованные</a></p></div>
             </div></div>
-            @FOREACH ($tasks as $task)
+            @FOREACH ($tasksdone as $taskdone)
             <div class="card border-light mb-3" style="max-width: 14rem;">
               <div class="card-body">
-                <h5 class="card-title"><a href="/home/task/{{ $task->id }}">{{ $task->name }}</a></h5>
-                <p class="card-text"><strong>Статус:</strong> {{ $task->status }}</p>
-                <p class="card-text"><strong>Дата создания:</strong><br> {{ $task->created_at }}</p>
-                <p class="card-text">{{ str_limit($task->description, $limit = 100, $end = '...') }}</p>
+                <h5 class="card-title"><a href="/home/task/{{ $taskdone->id }}">{{ $taskdone->name }}</a></h5>
+                <p class="card-text"><strong>Статус:</strong> {{ $taskdone->status }}</p>
+                <p class="card-text"><strong>Дата создания:</strong><br> {{ $taskdone->created_at }}</p>
+                <p class="card-text">{{ str_limit($taskdone->description, $limit = 100, $end = '...') }}</p>
                 <p class="card-text float-right"><a href="#">Изменить <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></p> 
               </div>
             </div>
@@ -35,24 +34,24 @@
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
 
-                @if($tasks->currentPage() == 1)
+                @if($tasksdone->currentPage() == 1)
                     <li class="page-item disabled">
-                        <a class="page-link" href="{{ $tasks->previousPageUrl() }}" tabindex="-1">Предидущая</a>
+                        <a class="page-link" href="{{ $tasksdone->previousPageUrl() }}" tabindex="-1">Предидущая</a>
                     </li>
                     @else
                     <li class="page-item">
-                        <a class="page-link" href="{{ $tasks->previousPageUrl() }}" tabindex="-1">Предидущая</a>
+                        <a class="page-link" href="{{ $tasksdone->previousPageUrl() }}" tabindex="-1">Предидущая</a>
                     </li>
                 @endif
 
-                <li class="page-item"><a class="page-link" href="{{ $tasks->url(1) }}">1</a></li>
-                <li class="page-item disabled"><p class="page-link">Вы на странице {{$tasks->currentPage()}}</p></li>
-                <li class="page-item"><a class="page-link" href="{{ '/home?page='.$tasks->lastPage() }}">{{ $tasks->lastPage() }}</a></li>
+                <li class="page-item"><a class="page-link" href="{{ $tasksdone->url(1) }}">1</a></li>
+                <li class="page-item disabled"><p class="page-link">Вы на странице {{$tasksdone->currentPage()}}</p></li>
+                <li class="page-item"><a class="page-link" href="{{ '/task_done?page='.$tasksdone->lastPage() }}">{{ $tasksdone->lastPage() }}</a></li>
 
-                @if($tasks->hasMorePages())
-                        <li class="page-item"><a class="page-link" href="{{ $tasks->nextPageUrl() }}">Следующая</a></li>
+                @if($tasksdone->hasMorePages())
+                        <li class="page-item"><a class="page-link" href="{{ $tasksdone->nextPageUrl() }}">Следующая</a></li>
                     @else
-                        <li class="page-item disabled"><a class="page-link" href="{{ $tasks->nextPageUrl() }}">Следующая</a>
+                        <li class="page-item disabled"><a class="page-link" href="{{ $tasksdone->nextPageUrl() }}">Следующая</a>
                 @endif
 
                 </li>

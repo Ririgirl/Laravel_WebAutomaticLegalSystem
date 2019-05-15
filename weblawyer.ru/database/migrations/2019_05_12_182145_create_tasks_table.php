@@ -17,7 +17,7 @@ class CreateTasksTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('status');
-            $table->string('description');
+            $table->text('description');
             $table->timestamps();
             $table->bigInteger('num_act')->unsigned();
             $table->foreign('num_act')->references('reg_number')->on('acts');
