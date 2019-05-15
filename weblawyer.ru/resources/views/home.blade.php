@@ -4,12 +4,17 @@
 @section('content')
 <div class="container">
     <div class="container search">
-        <form action="" class="search_form">
+        <form action="{{ action('HomeController@search') }}" class="search_form" method = "get">
+             {{ csrf_field() }}
+            <input type="hidden" name='_method' value='get'/>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Поиск по названиям задач" aria-label="Recipient's username" aria-describedby="button-addon2">
-              <div class="input-group-append">
-                <button class="btn btn btn-outline-dark" type="button" id="button-addon2">Поиск <i class="fa fa-search" aria-hidden="true"></i></button>
-              </div>
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true"></i></span>
+                </div>
+                <input type="text" name = "find_name" class="form-control" placeholder="Поиск по названиям задач" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <input class="btn btn btn-outline-dark" type="submit" value="Поиск" style="height:38px">
+                </div>
             </div>
         </form>
     </div><br/>
@@ -18,12 +23,12 @@
             <div class="container">
             <div class="row">
                 <div class="col-md-6"><p class="float-right"><a href="#" class="disabled">В разработке</a></p></div>
-                <div class="col-md-6"><p class="float-left"><a href="{{ action('HomeController@seetaskdone') }}">Реализованные</a></p></div>
+                <div class="col-md-6"><p class="float-left"><a href="{{ action('HomeController@seetaskdone') }}" style="text-decoration:none;">Реализованные</a></p></div>
             </div></div>
             @FOREACH ($tasks as $task)
             <div class="card border-light mb-3" style="max-width: 14rem;">
               <div class="card-body">
-                <h5 class="card-title"><a href="/home/task/{{ $task->id }}">{{ $task->name }}</a></h5>
+                <h5 class="card-title"><a href="/home/task/{{ $task->id }}" style="text-decoration:none;">{{ $task->name }}</a></h5>
                 <p class="card-text"><strong>Статус:</strong> {{ $task->status }}</p>
                 <p class="card-text"><strong>Дата создания:</strong><br> {{ $task->created_at }}</p>
                 <p class="card-text">{{ str_limit($task->description, $limit = 100, $end = '...') }}</p>

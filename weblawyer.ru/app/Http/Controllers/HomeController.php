@@ -61,6 +61,14 @@ class HomeController extends Controller
     }
     public function search(Request $request)
     {
-        
+        $search = $request->get('find_name');
+        $finds = DB::table('tasks')
+        ->join('acts', 'tasks.num_act', '=', 'acts.reg_number')
+        ->join('users', 'tasks.user_id', '=', 'users.id')
+        ->select('tasks.id', 'tasks.name', 'tasks.status', 'tasks.description', 'tasks.created_at', 'tasks.description', 'acts.reg_number', 'tasks.user_id')
+        ->where('tasks.name', 'like', '%'.$search.'%')
+        ->where('tasks.user_id', '=', Auth::user()->id)
+        ->paginate(10);
+        return view('tasks.search', compact('finds'));
     }
 }

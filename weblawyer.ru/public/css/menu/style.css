@@ -30,3 +30,11 @@ li > a, li > p{
     cursor: default;  /* устанавливаем курсор в виде стрелки */
     color: #999; /* цвет текста для нективной ссылки */
 }
+p.float-right > a{
+  text-decoration:none;
+}
+div.col-md-12 > p{
+  font-size: 14px;
+  color: #8d8d8d;
+  text-align:center;
+}
