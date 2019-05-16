@@ -23,8 +23,10 @@
             <div class="container">
             <div class="row">
                 <div class="col-md-6"><p class="float-right"><a href="#" class="disabled">В разработке</a></p></div>
-                <div class="col-md-6"><p class="float-left"><a href="{{ action('HomeController@seetaskdone') }}" style="text-decoration:none;">Реализованные</a></p></div>
-            </div></div>
+                <div class="col-md-3"><p class="float-left"><a href="{{ action('HomeController@seetaskdone') }}" style="text-decoration:none;">Реализованные</a></p></div>
+                <div class="col-md-3"><a class="btn btn btn-outline-dark float-right" href="{{ action('HomeController@createnewtask') }}" role="button">Добавить новую задау
+                </a></div>  
+            </div></div><br/><br/>
             @FOREACH ($tasks as $task)
             <div class="card border-light mb-3" style="max-width: 14rem;">
               <div class="card-body">
@@ -32,7 +34,7 @@
                 <p class="card-text"><strong>Статус:</strong> {{ $task->status }}</p>
                 <p class="card-text"><strong>Дата создания:</strong><br> {{ $task->created_at }}</p>
                 <p class="card-text">{{ str_limit($task->description, $limit = 100, $end = '...') }}</p>
-                <p class="card-text float-right"><a href="#">Изменить <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></p> 
+                <p class="card-text float-right"><a href="{{ action('HomeController@updatetask', $task->id) }}">Изменить <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></p> 
               </div>
             </div>
           @endFOREACH

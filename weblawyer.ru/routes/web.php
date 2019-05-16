@@ -21,4 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home'); //главная ст
 Route::get('/home/task/{id}', 'HomeController@seetask'); //подробности задачи
 Route::get('/home/task_done', 'HomeController@seetaskdone'); //реализованные задачи
 Route::get('/home/search', 'HomeController@search'); //поиск задачи
-
+Route::get('/home/update_task/{id}','HomeController@updatetask');//вносим изменения в задачу
+Route::post('/home/update_task/save/{id}', 'HomeController@updatetasksave');//сохранение измененией данных о задаче
+Route::get('/home/createnewtask','HomeController@createnewtask');//форма для создания ново задачи

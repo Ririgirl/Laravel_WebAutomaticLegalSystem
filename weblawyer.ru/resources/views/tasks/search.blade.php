@@ -29,7 +29,7 @@
                 <p class="card-text"><strong>Статус:</strong> {{ $find->status }}</p>
                 <p class="card-text"><strong>Дата создания:</strong><br> {{ $find->created_at }}</p>
                 <p class="card-text">{{ str_limit($find->description, $limit = 100, $end = '...') }}</p>
-                <p class="card-text float-right"><a href="#">Изменить <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></p> 
+                <p class="card-text float-right"><a href="{{ action('HomeController@updatetask', $find->id) }}">Изменить <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></p> 
               </div>
             </div>
           @endFOREACH

@@ -34,6 +34,7 @@ class HomeController extends Controller
         ->select('tasks.id', 'tasks.name', 'tasks.status', 'tasks.description', 'tasks.created_at', 'tasks.description', 'acts.reg_number', 'tasks.user_id')
         ->where('tasks.status', '=', 'В работе')
         ->where('tasks.user_id', '=', Auth::user()->id)
+        ->orderBy('tasks.created_at','desc')
         ->paginate(10);
         return view('home', compact('tasks'));
     }
@@ -56,6 +57,7 @@ class HomeController extends Controller
         ->select('tasks.id', 'tasks.name', 'tasks.status', 'tasks.description', 'tasks.created_at', 'tasks.description', 'acts.reg_number', 'tasks.user_id')
         ->where('tasks.status', '=', 'Выполнено')
         ->where('tasks.user_id', '=', Auth::user()->id)
+        ->orderBy('tasks.created_at','desc')
         ->paginate(10);
         return view('tasks.donetask', compact('tasksdone'));
     }
@@ -68,7 +70,36 @@ class HomeController extends Controller
         ->select('tasks.id', 'tasks.name', 'tasks.status', 'tasks.description', 'tasks.created_at', 'tasks.description', 'acts.reg_number', 'tasks.user_id')
         ->where('tasks.name', 'like', '%'.$search.'%')
         ->where('tasks.user_id', '=', Auth::user()->id)
+        ->orderBy('tasks.created_at','desc')
         ->paginate(10);
         return view('tasks.search', compact('finds'));
+    }
+    public function updatetask($id)
+    {
+        $task = DB::table('tasks')
+        ->join('acts', 'tasks.num_act', '=', 'acts.reg_number')
+        ->join('users', 'tasks.user_id', '=', 'users.id')
+        ->select('tasks.id', 'tasks.name', 'tasks.status', 'tasks.description', 'tasks.created_at', 'tasks.description', 'acts.reg_number', 'tasks.user_id')
+        ->where('tasks.id','=', $id)
+        ->first();
+        return view('tasks.update_task', compact('task'));
+    }
+    public function updatetasksave(Request $request, $id)
+    {
+        $task = tasks::find($id);
+        $task->name =  $request->get('name');
+        $task->description =  $request->get('description');
+        $task->status =  $request->get('status');
+        $task->save();
+        return redirect()->route('home');
+    }
+    public function createnewtask()
+    {
+        $acts = DB::table('acts')
+        ->join('users', 'acts.user_id', '=', 'users.id')
+        ->select('acts.reg_number', 'acts.type', 'acts.user_id')
+        ->where('acts.user_id', '=', Auth::user()->id)
+        ->get();
+        return view('tasks.new_task', compact('acts'));
     }
 }

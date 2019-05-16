@@ -3,11 +3,14 @@
 @section('content')
 <div class="container">
     <div class="container search">
-        <form action="" class="search_form">
+        <form action="{{ action('HomeController@search') }}" class="search_form">
             <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true"></i></span>
+              </div>
               <input type="text" class="form-control" placeholder="Поиск по названиям задач" aria-label="Recipient's username" aria-describedby="button-addon2">
               <div class="input-group-append">
-                <button class="btn btn btn-outline-dark" type="button" id="button-addon2">Поиск <i class="fa fa-search" aria-hidden="true"></i></button>
+                <input class="btn btn btn-outline-dark" type="submit" value="Поиск" style="height:38px">
               </div>
             </div>
         </form>
@@ -26,7 +29,7 @@
                 <p class="card-text"><strong>Статус:</strong> {{ $taskdone->status }}</p>
                 <p class="card-text"><strong>Дата создания:</strong><br> {{ $taskdone->created_at }}</p>
                 <p class="card-text">{{ str_limit($taskdone->description, $limit = 100, $end = '...') }}</p>
-                <p class="card-text float-right"><a href="#">Изменить <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></p> 
+                <p class="card-text float-right"><a href="{{ action('HomeController@updatetask', $taskdone->id) }}">Изменить <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></p> 
               </div>
             </div>
           @endFOREACH

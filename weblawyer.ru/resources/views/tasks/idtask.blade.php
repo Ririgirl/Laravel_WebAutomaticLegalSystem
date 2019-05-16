@@ -9,7 +9,7 @@
 			    <p class="card-text"><strong>Дата:</strong> {{ $task->created_at }} | <strong>Дело №:</strong> <a href="#">{{ $task->reg_number }}</a> | <strong>Статус:</strong> {{ $task->status }}</p>
 			    <p class="card-text"></p>
 			    <p class="card-text" style="font-size:100%;">{{ $task->description }}</p>
-			    <p class="card-text float-right"><a href="#">Изменить <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></p> 
+			    <p class="card-text float-right"><a href="{{ action('HomeController@updatetask', $task->id) }}">Изменить <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></p> 
 			  </div>
 			</div>
 		</div>
