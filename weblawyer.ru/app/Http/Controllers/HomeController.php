@@ -102,4 +102,15 @@ class HomeController extends Controller
         ->get();
         return view('tasks.new_task', compact('acts'));
     }
+    public function savenewtask(Request $request)
+    {
+        $task = new tasks;
+        $task->name = $request->get('name');
+        $task->status = $request->get('status');
+        $task->description = $request->get('description');
+        $task->num_act = $request->get('delo');
+        $task->user_id = Auth::user()->id;
+        $task->save();
+        return redirect()->route('home');
+    }
 }

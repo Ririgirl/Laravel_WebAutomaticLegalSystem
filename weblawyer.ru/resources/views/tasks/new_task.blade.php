@@ -4,7 +4,7 @@
 @section('content')
 <div class="container">
     <div class="container task_last">
-        <form action = "#" method = "post">
+        <form action = "{{ action('HomeController@savenewtask') }}" method = "post">
             {{ csrf_field() }}
             <div class="row">
             <input type="hidden" name='_method' value='post'/>

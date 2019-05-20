@@ -24,3 +24,6 @@ Route::get('/home/search', 'HomeController@search'); //поиск задачи
 Route::get('/home/update_task/{id}','HomeController@updatetask');//вносим изменения в задачу
 Route::post('/home/update_task/save/{id}', 'HomeController@updatetasksave');//сохранение измененией данных о задаче
 Route::get('/home/createnewtask','HomeController@createnewtask');//форма для создания ново задачи
+Route::post('/home/createnewtask/save', 'HomeController@savenewtask');//добавление новой задачи
+Route::get('/acts','ActsController@seeacts');//открытие вкладки дела и просмотр последних 
+Route::get('/acts/search','ActsController@search');//поиск дела

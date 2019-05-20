@@ -67,7 +67,7 @@
                         @else
                         <ul class="header-nav">
                           <li><a class="ajax-link" href="{{ route('home') }}">Задачи</a>
-                            <li><a class="ajax-link" href="about-me.html">Дела</a></li>
+                            <li><a class="ajax-link" href="{{ action('ActsController@seeacts') }}">Дела</a></li>
                             <li><a class="ajax-link" href="contact.html">Документы</a></li>
                           </ul>
                           <ul class="social-icon">
