@@ -18,12 +18,15 @@
         </form>
     </div><br/>
     <div class="container task_last">
-        <div class="row book justify-content-center" style="padding:10;">
-        	<div class="container">
-            <div class="row">
-                <div class="col-md-12"><p>Данные по вашему запросу</p></div>
-            </div></div>
-            <table class="table table-hover">
+        <div class="row book justify-content-center">
+            <div class="container">
+	            <div class="container">
+	            	
+		                	<div class="row">
+		                		<div class="col-md-12">
+		                			<a class="btn btn btn-outline-dark float-right" href="#" role="button">Добавить новое дело</a><br/><br/>
+		                		</div>
+		                		<table class="table table-hover">
 												  <thead>
 												    <tr>
 												      <th scope="col">#</th>
@@ -34,42 +37,21 @@
 												  </thead>
 												  <tbody>
 												    
-		                					@FOREACH ($finds as $find)<tr>
+		                					@FOREACH ($finds_types as $find_type)<tr>
 		                		 					<th scope="row">{{ $loop->iteration }} {{-- Starts with 1 --}}</th>
-														      <td>{{ $find->reg_number }}</td>
-														      <td>{{ $find->type}}</td>
+														      <td>{{ $find_type->reg_number }}</td>
+														      <td>{{ $find_type->type}}</td>
 														      <td><a class="btn btn btn-outline-info float-right" href="#" role="button">Посмотреть дело</a></td>
 			            						</tr>@endFOREACH
 	                    	 		
 												  </tbody>
 												</table>
+		                	 
+	            	</div>
+	            </div>
+          	</div><br/><br/>
+           
         </div>
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-
-                @if($finds->currentPage() == 1)
-                    <li class="page-item disabled">
-                        <a class="page-link" href="{{ $finds->previousPageUrl() }}" tabindex="-1">Предидущая</a>
-                    </li>
-                    @else
-                    <li class="page-item">
-                        <a class="page-link" href="{{ $finds->previousPageUrl() }}" tabindex="-1">Предидущая</a>
-                    </li>
-                @endif
-
-                <li class="page-item"><a class="page-link" href="{{ $finds->url(1) }}">1</a></li>
-                <li class="page-item disabled"><p class="page-link">Вы на странице {{ $finds->currentPage()}}</p></li>
-                <li class="page-item"><a class="page-link" href="{{ '/search?page='.$finds->lastPage() }}">{{ $finds->lastPage() }}</a></li>
-
-                @if($finds->hasMorePages())
-                        <li class="page-item"><a class="page-link" href="{{ $finds->nextPageUrl() }}">Следующая</a></li>
-                    @else
-                        <li class="page-item disabled"><a class="page-link" href="{{ $finds->nextPageUrl() }}">Следующая</a>
-                @endif
-
-                </li>
-            </ul>
-        </nav>
     </div>
 </div>
 @endsection('content')

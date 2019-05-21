@@ -27,7 +27,7 @@
 	            				<div class="col-md-12">
 	            					<div id="list-example" class="list-group">
 	            						@FOREACH ($types_acts as $type_act)
-			            					<a class="list-group-item list-group-item-action" href="{{ $type_act->type }}">{{ $type_act->type}}</a>
+			            					<a class="list-group-item list-group-item-action" href="{{ action('ActsController@seetypeacts', $type_act->type) }}">{{ $type_act->type}}</a>
 	                    		@endFOREACH
 	                    	</div>
 											</div>
@@ -36,7 +36,7 @@
 		                <div class="col-md-8">
 		                	<div class="row">
 		                		<div class="col-md-12">
-		                			<a class="btn btn btn-outline-dark float-right" href="#" role="button">Добавить новое дело</a><br/><br/>
+		                			<a class="btn btn btn-outline-dark float-right" href="{{ action('ActsController@newact') }}" role="button">Добавить новое дело</a><br/><br/>
 		                		</div>
 		                		<table class="table table-hover">
 												  <thead>
@@ -48,14 +48,14 @@
 												    </tr>
 												  </thead>
 												  <tbody>
-												    <tr>
-		                					@FOREACH ($acts as $act)
+		                					@FOREACH ($acts as $act) 
+		                						<tr>
 		                		 					<th scope="row">{{ $loop->iteration }} {{-- Starts with 1 --}}</th>
 														      <td>{{ $act->reg_number }}</td>
 														      <td>{{ $act->type}}</td>
-														      <td><a class="btn btn btn-outline-info float-right" href="#" role="button">Посмотреть дело</a></td>
+														      <td><a class="btn btn btn-outline-info float-right" href="{{ action('ActsController@see_act', $act->reg_number ) }}" role="button">Посмотреть дело</a></td>
+			            							</tr>
 			            						@endFOREACH
-	                    	 		</tr>
 												  </tbody>
 												</table>
 		                	</div>

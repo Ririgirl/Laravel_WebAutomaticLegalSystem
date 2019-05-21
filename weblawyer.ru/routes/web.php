@@ -25,5 +25,9 @@ Route::get('/home/update_task/{id}','HomeController@updatetask');//вносим 
 Route::post('/home/update_task/save/{id}', 'HomeController@updatetasksave');//сохранение измененией данных о задаче
 Route::get('/home/createnewtask','HomeController@createnewtask');//форма для создания ново задачи
 Route::post('/home/createnewtask/save', 'HomeController@savenewtask');//добавление новой задачи
-Route::get('/acts','ActsController@seeacts');//открытие вкладки дела и просмотр последних 
+Route::get('/acts','ActsController@seeacts')->name('actstart');;//открытие вкладки дела и просмотр последних 
+Route::get('/acts/type/{name}','ActsController@seetypeacts');//сортирока по типу дела
 Route::get('/acts/search','ActsController@search');//поиск дела
+Route::get('/acts/new_act','ActsController@newact');//новое дело
+Route::post('/acts/new_act/save', 'ActsController@savenewact');//добавление нового дела
+Route::get('/acts/{num_delo}','ActsController@see_act');//новое дело
