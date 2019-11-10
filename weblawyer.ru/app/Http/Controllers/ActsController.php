@@ -25,6 +25,7 @@ class ActsController extends Controller
         $types_acts = DB::table('acts')
         ->select('type')
         ->distinct('type')
+        ->where('acts.user_id', '=', Auth::user()->id)
         ->get();
         return view('acts.start', compact('acts', 'types_acts'));
     }
@@ -66,15 +67,21 @@ class ActsController extends Controller
         $act->save();
         return redirect()->route('actstart');
     }
-    public function see_act($num_act)
+    public function see_act($num_delo)
     {
     	$watch = DB::table('acts')
+      ->join('users', 'acts.user_id', '=', 'users.id')
+      ->select('acts.reg_number', 'acts.type', 'acts.user_id')
+      ->where('acts.user_id', '=', Auth::user()->id)
+      ->where('acts.reg_number', '=', $num_delo)
+      ->first();
+      $watch_tasks = DB::table('acts')
       ->join('users', 'acts.user_id', '=', 'users.id')
       ->join('tasks', 'tasks.num_act', '=', 'acts.reg_number')
       ->select('acts.reg_number', 'acts.type', 'acts.user_id', 'tasks.name', 'tasks.status', 'tasks.id', 'tasks.description', 'tasks.created_at')
       ->where('acts.user_id', '=', Auth::user()->id)
-      ->where('acts.reg_number', '=', $num_act)
+      ->where('acts.reg_number', '=', $num_delo)
       ->get();
-    	return view('acts.seeact', compact('watch'));
+    	return view('acts.seeact', compact('watch', 'watch_tasks'));
     }
 }

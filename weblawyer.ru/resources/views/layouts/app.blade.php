@@ -19,7 +19,7 @@
 <style>
   .logo > a, .social-index > li > a, .header-nav > li > a, .header-nav > li > ul > a{
       font-size:11px;
-      color:#8d8d8d;
+      color:#5e5e5e;
       font-family: 'Raleway', sans-serif;
       text-decoration: none;
     }
@@ -32,6 +32,12 @@
   }
   .social-icon {
     text-decoration: none;
+  }
+  a.float-right{
+    color:#8d8d8d;
+    font-family: 'Raleway', sans-serif;
+    text-decoration: none;
+    margin:1%;
   }
 </style>
 <body>
@@ -101,7 +107,17 @@
 
 <footer id="footer-box">
   <div class="footer-margin"> 
-  <div class="copyright" id="footer-left">© Copyright 2019 WebLayer.ru. All Rights Reserved.</div>
+  <div class="copyright" id="footer-left">
+    <div class="row">
+      <div class="col-md-6">
+        © Copyright 2019 WebLayer.ru.
+      </div>
+      <div class="col-md-6">
+        <a href="#" class="float-right"> О системе </a> 
+        <a href="#" class="float-right"> О нас </a>
+        <a href="#" class="float-right"> Контакты </a>
+      </div>
+    </div></div>
   </div>
 </footer>
 
